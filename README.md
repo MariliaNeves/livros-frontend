@@ -1,27 +1,82 @@
-# LivrosFrontend
+# Livros Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.11.
+Frontend Angular para cadastro de livros, autores e assuntos, com tela de relatorio de livros por autor.
 
-## Development server
+## Tecnologias
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Angular 13.3
 
-## Code scaffolding
+## Pre-requisitos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Node.js compativel com Angular 13
+- npm
+- API backend em execucao
 
-## Build
+O front consome a API em:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+http://localhost:8080/api
+```
 
-## Running unit tests
+## Instalar dependencias
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm install
+```
 
-## Running end-to-end tests
+## Executar 
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+ng serve
+```
 
-## Further help
+Depois acesse:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+http://localhost:4200/
+```
+
+## Funcionalidades
+
+- Listagem, cadastro, edicao e exclusao de livros
+- Listagem, cadastro, edicao e exclusao de autores
+- Listagem, cadastro, edicao e exclusao de assuntos
+- Associacao de livros com autores e assuntos
+- Relatorio de livros por autor
+
+## Rotas
+
+| Rota | Descricao |
+| --- | --- |
+| `/livros` | Lista de livros |
+| `/livros/novo` | Cadastro de livro |
+| `/livros/:id/editar` | Edicao de livro |
+| `/autores` | Lista de autores |
+| `/autores/novo` | Cadastro de autor |
+| `/autores/:id/editar` | Edicao de autor |
+| `/assuntos` | Lista de assuntos |
+| `/assuntos/novo` | Cadastro de assunto |
+| `/assuntos/:id/editar` | Edicao de assunto |
+| `/relatorio` | Relatorio de livros por autor |
+
+## Endpoints esperados
+
+O frontend usa os seguintes recursos da API:
+
+| Recurso | Endpoint base |
+| --- | --- |
+| Livros | `/api/livros` |
+| Autores | `/api/autores` |
+| Assuntos | `/api/assuntos` |
+| Relatorio | `/api/relatorios/livros-por-autor` |
+
+Para livros, autores e assuntos, a aplicacao usa operacoes CRUD com `GET`, `POST`, `PUT` e `DELETE`.
+
+## Estrutura principal
+
+```text
+src/app/app/models      Modelos da aplicacao
+src/app/app/services    Servicos HTTP
+src/app/app/pages       Paginas de livros, autores, assuntos e relatorio
+src/app/app/shared      Componentes compartilhados
+```
