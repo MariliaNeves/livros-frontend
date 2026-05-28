@@ -6,6 +6,7 @@ import { AutoresListComponent } from './app/pages/autores/autores-list/autores-l
 import { AutoresFormComponent } from './app/pages/autores/autores-form/autores-form.component';
 import { LivrosListComponent } from './app/pages/livros/livros-list/livros-list.component';
 import { LivrosFormComponent } from './app/pages/livros/livros-form/livros-form.component';
+import { RelatorioLivrosPorAutorComponent } from './app/pages/relatorio/relatorio-livros-por-autor/relatorio-livros-por-autor.component';
 
  const routes: Routes = [
     { path: '', redirectTo: 'livros', pathMatch: 'full' },                                                                                                                 
@@ -17,7 +18,8 @@ import { LivrosFormComponent } from './app/pages/livros/livros-form/livros-form.
     { path: 'assuntos/:id/editar', component: AssuntosFormComponent },
     { path: 'autores', component: AutoresListComponent },                                                                                                                  
     { path: 'autores/novo', component: AutoresFormComponent },                                                                                                             
-    { path: 'autores/:id/editar', component: AutoresFormComponent },                                                                                                      
+    { path: 'autores/:id/editar', component: AutoresFormComponent },
+    { path: 'relatorio', component: RelatorioLivrosPorAutorComponent },                                                                                                      
   ]; 
 
 @NgModule({
