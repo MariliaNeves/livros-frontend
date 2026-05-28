@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h1>Assuntos</h1>
+  <a class="btn btn-primary" routerLink="/assuntos/novo">Novo assunto</a>
+</div>
+
+<div *ngIf="erro" class="alert alert-error">{{ erro }}</div>
+
+<section class="panel">
+  <p *ngIf="carregando" class="muted">Carregando assuntos...</p>
+
+  <div *ngIf="!carregando && assuntos.length > 0" class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Descrição</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let assunto of assuntos">
+          <td>{{ idAssunto(assunto) }}</td>
+          <td>{{ assunto.descricao }}</td>
+          <td>
+            <div class="table-actions">
+              <a class="btn btn-secondary" [routerLink]="['/assuntos', idAssunto(assunto), 'editar']">Editar</a>
+              <button class="btn btn-danger" type="button" (click)="excluir(assunto)">Excluir</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p *ngIf="!carregando && assuntos.length === 0" class="muted">Nenhum assunto cadastrado.</p>
+</section>
