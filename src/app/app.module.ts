@@ -11,6 +11,7 @@ import { AutoresListComponent } from './app/pages/autores/autores-list/autores-l
 import { AutoresFormComponent } from './app/pages/autores/autores-form/autores-form.component';
 import { LivrosListComponent } from './app/pages/livros/livros-list/livros-list.component';
 import { LivrosFormComponent } from './app/pages/livros/livros-form/livros-form.component';
+import { MenuComponent } from './app/shared/menu/menu.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { LivrosFormComponent } from './app/pages/livros/livros-form/livros-form.
     AutoresListComponent,
     AutoresFormComponent,
     LivrosListComponent,
-    LivrosFormComponent
+    LivrosFormComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
