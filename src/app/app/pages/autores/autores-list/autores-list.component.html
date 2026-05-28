@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h1>Autores</h1>
+  <a class="btn btn-primary" routerLink="/autores/novo">Novo autor</a>
+</div>
+
+<div *ngIf="erro" class="alert alert-error">{{ erro }}</div>
+
+<section class="panel">
+  <p *ngIf="carregando" class="muted">Carregando autores...</p>
+
+  <div *ngIf="!carregando && autores.length > 0" class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nome</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let autor of autores">
+          <td>{{ idAutor(autor) }}</td>
+          <td>{{ autor.nome }}</td>
+          <td>
+            <div class="table-actions">
+              <a class="btn btn-secondary" [routerLink]="['/autores', idAutor(autor), 'editar']">Editar</a>
+              <button class="btn btn-danger" type="button" (click)="excluir(autor)">Excluir</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p *ngIf="!carregando && autores.length === 0" class="muted">Nenhum autor cadastrado.</p>
+</section>

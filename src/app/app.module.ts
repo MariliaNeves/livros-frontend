@@ -7,13 +7,17 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { AssuntosListComponent } from './app/pages/assuntos/assuntos-list/assuntos-list.component';
 import { AssuntosFormComponent } from './app/pages/assuntos/assuntos-form/assuntos-form.component';
+import { AutoresListComponent } from './app/pages/autores/autores-list/autores-list.component';
+import { AutoresFormComponent } from './app/pages/autores/autores-form/autores-form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AssuntosListComponent,
-    AssuntosFormComponent
+    AssuntosFormComponent,
+    AutoresListComponent,
+    AutoresFormComponent
   ],
   imports: [
     BrowserModule,

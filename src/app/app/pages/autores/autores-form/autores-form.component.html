@@ -1,0 +1,21 @@
+<div class="page-header">
+  <h1>{{ id === undefined ? 'Novo autor' : 'Editar autor' }}</h1>
+  <a class="btn btn-secondary" routerLink="/autores">Voltar</a>
+</div>
+
+<div *ngIf="erro" class="alert alert-error">{{ erro }}</div>
+
+<form class="panel" [formGroup]="form" (ngSubmit)="salvar()">
+  <div class="form-grid">
+    <div class="form-field full">
+      <label for="nome">Nome</label>
+      <input id="nome" type="text" formControlName="nome" maxlength="40" />
+      <span *ngIf="campoInvalido('nome')" class="field-error">{{ mensagemCampo('nome') }}</span>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-primary" type="submit" [disabled]="salvando">Salvar</button>
+    <a class="btn btn-secondary" routerLink="/autores">Voltar</a>
+  </div>
+</form>
