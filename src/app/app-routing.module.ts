@@ -4,8 +4,14 @@ import { AssuntosListComponent } from './app/pages/assuntos/assuntos-list/assunt
 import { AssuntosFormComponent } from './app/pages/assuntos/assuntos-form/assuntos-form.component';
 import { AutoresListComponent } from './app/pages/autores/autores-list/autores-list.component';
 import { AutoresFormComponent } from './app/pages/autores/autores-form/autores-form.component';
+import { LivrosListComponent } from './app/pages/livros/livros-list/livros-list.component';
+import { LivrosFormComponent } from './app/pages/livros/livros-form/livros-form.component';
 
- const routes: Routes = [                                                                                                                                               
+ const routes: Routes = [
+    { path: '', redirectTo: 'livros', pathMatch: 'full' },                                                                                                                 
+    { path: 'livros', component: LivrosListComponent },                                                                                                                    
+    { path: 'livros/novo', component: LivrosFormComponent },                                                                                                               
+    { path: 'livros/:id/editar', component: LivrosFormComponent },                                                                                                                                               
     { path: 'assuntos', component: AssuntosListComponent },                                                                                                              
     { path: 'assuntos/novo', component: AssuntosFormComponent },                                                                                                         
     { path: 'assuntos/:id/editar', component: AssuntosFormComponent },

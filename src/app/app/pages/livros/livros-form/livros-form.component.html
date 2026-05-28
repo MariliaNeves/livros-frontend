@@ -1,0 +1,75 @@
+<div class="page-header">
+  <h1>{{ id === undefined ? 'Novo livro' : 'Editar livro' }}</h1>
+  <a class="btn btn-secondary" routerLink="/livros">Voltar</a>
+</div>
+
+<div *ngIf="erro" class="alert alert-error">{{ erro }}</div>
+
+<form class="panel" [formGroup]="form" (ngSubmit)="salvar()">
+  <div class="form-grid">
+    <div class="form-field full">
+      <label for="titulo">Titulo</label>
+      <input id="titulo" type="text" formControlName="titulo" maxlength="40" />
+      <span *ngIf="campoInvalido('titulo')" class="field-error">{{ mensagemCampo('titulo') }}</span>
+    </div>
+
+    <div class="form-field">
+      <label for="editora">Editora</label>
+      <input id="editora" type="text" formControlName="editora" maxlength="40" />
+      <span *ngIf="campoInvalido('editora')" class="field-error">{{ mensagemCampo('editora') }}</span>
+    </div>
+
+    <div class="form-field">
+      <label for="edicao">Edicao</label>
+      <input id="edicao" type="number" formControlName="edicao" min="1" />
+      <span *ngIf="campoInvalido('edicao')" class="field-error">{{ mensagemCampo('edicao') }}</span>
+    </div>
+
+    <div class="form-field">
+      <label for="anoPublicacao">Ano de publicacao</label>
+      <input id="anoPublicacao" type="text" formControlName="anoPublicacao" inputmode="numeric" maxlength="4" />
+      <span *ngIf="campoInvalido('anoPublicacao')" class="field-error">{{ mensagemCampo('anoPublicacao') }}</span>
+    </div>
+
+    <div class="form-field">
+      <label for="valor">Valor</label>
+      <input id="valor" type="text" formControlName="valor" inputmode="numeric" placeholder="R$ 0,00" (input)="aplicarMascaraValor($event)" (blur)="formatarValor()" />
+      <span *ngIf="campoInvalido('valor')" class="field-error">{{ mensagemCampo('valor') }}</span>
+    </div>
+
+    <div class="form-field">
+      <label for="autoresIds">Autores</label>
+      <div id="autoresIds" class="checkbox-list">
+        <label class="checkbox-item" *ngFor="let autor of autores">
+          <input
+            type="checkbox"
+            [checked]="autorSelecionado(autor)"
+            (change)="alternarAutor(autor, $any($event.target).checked)"
+          />
+          <span>{{ autor.nome }}</span>
+        </label>
+      </div>
+      <span *ngIf="campoInvalido('autoresIds')" class="field-error">{{ mensagemCampo('autoresIds') }}</span>
+    </div>
+
+    <div class="form-field">
+      <label for="assuntosIds">Assuntos</label>
+      <div id="assuntosIds" class="checkbox-list">
+        <label class="checkbox-item" *ngFor="let assunto of assuntos">
+          <input
+            type="checkbox"
+            [checked]="assuntoSelecionado(assunto)"
+            (change)="alternarAssunto(assunto, $any($event.target).checked)"
+          />
+          <span>{{ assunto.descricao }}</span>
+        </label>
+      </div>
+      <span *ngIf="campoInvalido('assuntosIds')" class="field-error">{{ mensagemCampo('assuntosIds') }}</span>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-primary" type="submit" [disabled]="salvando">Salvar</button>
+    <a class="btn btn-secondary" routerLink="/livros">Voltar</a>
+  </div>
+</form>
